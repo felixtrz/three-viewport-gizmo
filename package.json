@@ -38,7 +38,7 @@
     "vue": "^3.5.12"
   },
   "peerDependencies": {
-    "three": "^0.170.0"
+    "three": "^0.169.0"
   },
   "dependencies": {
     "camera-controls": "^2.8.3",
