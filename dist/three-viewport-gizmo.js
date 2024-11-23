@@ -1,8 +1,8 @@
-var mt = Object.defineProperty;
-var gt = (s, t, e) => t in s ? mt(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
-var d = (s, t, e) => gt(s, typeof t != "symbol" ? t + "" : t, e);
-import { Box3 as V, Vector3 as v, InstancedBufferGeometry as _t, Float32BufferAttribute as k, InstancedInterleavedBuffer as N, InterleavedBufferAttribute as O, WireframeGeometry as vt, Sphere as at, UniformsLib as R, Vector2 as B, ShaderLib as W, UniformsUtils as ct, ShaderMaterial as yt, Vector4 as A, Matrix4 as lt, Line3 as St, Mesh as dt, MathUtils as wt, Color as ht, SphereGeometry as xt, MeshBasicMaterial as bt, BackSide as Et, CanvasTexture as Mt, SRGBColorSpace as At, RepeatWrapping as Lt, SpriteMaterial as zt, Sprite as Pt, Raycaster as Ut, Object3D as Ct, OrthographicCamera as Ot, Clock as Bt, Quaternion as F, Euler as Dt } from "three";
-const Tt = (s, t, e, i, n) => {
+var gt = Object.defineProperty;
+var _t = (s, t, e) => t in s ? gt(s, t, { enumerable: !0, configurable: !0, writable: !0, value: e }) : s[t] = e;
+var d = (s, t, e) => _t(s, typeof t != "symbol" ? t + "" : t, e);
+import { Box3 as $, Vector3 as v, InstancedBufferGeometry as vt, Float32BufferAttribute as Q, InstancedInterleavedBuffer as V, InterleavedBufferAttribute as O, WireframeGeometry as yt, Sphere as ct, UniformsLib as R, Vector2 as B, ShaderLib as W, UniformsUtils as lt, ShaderMaterial as wt, Vector4 as M, Matrix4 as dt, Line3 as St, Mesh as ht, MathUtils as xt, Color as ut, SphereGeometry as bt, MeshBasicMaterial as Et, BackSide as Mt, CanvasTexture as At, SRGBColorSpace as Lt, RepeatWrapping as zt, SpriteMaterial as Pt, Sprite as Ct, Raycaster as Ut, Object3D as Ot, OrthographicCamera as Bt, Clock as Dt, Quaternion as F, Euler as Tt } from "three";
+const It = (s, t, e, i, n) => {
   const r = document.createElement("div"), o = e.top ?? 0, a = e.left ?? 0, h = e.right ?? 0, u = e.bottom ?? 0, [l, c] = s.split("-");
   return Object.assign(r.style, {
     height: `${t}px`,
@@ -19,12 +19,12 @@ const Tt = (s, t, e, i, n) => {
     top: l === "top" ? "0" : l === "bottom" ? "" : "50%",
     bottom: l === "bottom" ? "0" : ""
   }), i && (r.id = i), n && (r.className = n), r;
-}, Q = new V(), D = new v();
-class ut extends _t {
+}, X = new $(), D = new v();
+class pt extends vt {
   constructor() {
     super(), this.isLineSegmentsGeometry = !0, this.type = "LineSegmentsGeometry";
     const t = [-1, 2, 0, 1, 2, 0, -1, 1, 0, 1, 1, 0, -1, 0, 0, 1, 0, 0, -1, -1, 0, 1, -1, 0], e = [-1, 2, 1, 2, -1, 1, 1, 1, -1, -1, 1, -1, -1, -2, 1, -2], i = [0, 2, 1, 2, 3, 1, 2, 4, 3, 4, 5, 3, 4, 6, 5, 6, 7, 5];
-    this.setIndex(i), this.setAttribute("position", new k(t, 3)), this.setAttribute("uv", new k(e, 2));
+    this.setIndex(i), this.setAttribute("position", new Q(t, 3)), this.setAttribute("uv", new Q(e, 2));
   }
   applyMatrix4(t) {
     const e = this.attributes.instanceStart, i = this.attributes.instanceEnd;
@@ -33,13 +33,13 @@ class ut extends _t {
   setPositions(t) {
     let e;
     t instanceof Float32Array ? e = t : Array.isArray(t) && (e = new Float32Array(t));
-    const i = new N(e, 6, 1);
-    return this.setAttribute("instanceStart", new O(i, 3, 0)), this.setAttribute("instanceEnd", new O(i, 3, 3)), this.computeBoundingBox(), this.computeBoundingSphere(), this;
+    const i = new V(e, 6, 1);
+    return this.setAttribute("instanceStart", new O(i, 3, 0)), this.setAttribute("instanceEnd", new O(i, 3, 3)), this.instanceCount = this.attributes.instanceStart.count, this.computeBoundingBox(), this.computeBoundingSphere(), this;
   }
   setColors(t) {
     let e;
     t instanceof Float32Array ? e = t : Array.isArray(t) && (e = new Float32Array(t));
-    const i = new N(e, 6, 1);
+    const i = new V(e, 6, 1);
     return this.setAttribute("instanceColorStart", new O(i, 3, 0)), this.setAttribute("instanceColorEnd", new O(i, 3, 3)), this;
   }
   fromWireframeGeometry(t) {
@@ -49,19 +49,19 @@ class ut extends _t {
     return this.setPositions(t.attributes.position.array), this;
   }
   fromMesh(t) {
-    return this.fromWireframeGeometry(new vt(t.geometry)), this;
+    return this.fromWireframeGeometry(new yt(t.geometry)), this;
   }
   fromLineSegments(t) {
     const e = t.geometry;
     return this.setPositions(e.attributes.position.array), this;
   }
   computeBoundingBox() {
-    this.boundingBox === null && (this.boundingBox = new V());
+    this.boundingBox === null && (this.boundingBox = new $());
     const t = this.attributes.instanceStart, e = this.attributes.instanceEnd;
-    t !== void 0 && e !== void 0 && (this.boundingBox.setFromBufferAttribute(t), Q.setFromBufferAttribute(e), this.boundingBox.union(Q));
+    t !== void 0 && e !== void 0 && (this.boundingBox.setFromBufferAttribute(t), X.setFromBufferAttribute(e), this.boundingBox.union(X));
   }
   computeBoundingSphere() {
-    this.boundingSphere === null && (this.boundingSphere = new at()), this.boundingBox === null && this.computeBoundingBox();
+    this.boundingSphere === null && (this.boundingSphere = new ct()), this.boundingBox === null && this.computeBoundingBox();
     const t = this.attributes.instanceStart, e = this.attributes.instanceEnd;
     if (t !== void 0 && e !== void 0) {
       const i = this.boundingSphere.center;
@@ -89,7 +89,7 @@ R.line = {
   // todo FIX - maybe change to totalSize
 };
 W.line = {
-  uniforms: ct.merge([
+  uniforms: lt.merge([
     R.common,
     R.fog,
     R.line
@@ -473,11 +473,13 @@ W.line = {
 		`
   )
 };
-class $ extends yt {
+class k extends wt {
+  static get type() {
+    return "LineMaterial";
+  }
   constructor(t) {
     super({
-      type: "LineMaterial",
-      uniforms: ct.clone(W.line.uniforms),
+      uniforms: lt.clone(W.line.uniforms),
       vertexShader: W.line.vertexShader,
       fragmentShader: W.line.fragmentShader,
       clipping: !0
@@ -548,15 +550,15 @@ class $ extends yt {
     return "USE_ALPHA_TO_COVERAGE" in this.defines;
   }
   set alphaToCoverage(t) {
-    this.defines && (t === !0 !== this.alphaToCoverage && (this.needsUpdate = !0), t === !0 ? (this.defines.USE_ALPHA_TO_COVERAGE = "", this.extensions.derivatives = !0) : (delete this.defines.USE_ALPHA_TO_COVERAGE, this.extensions.derivatives = !1));
+    this.defines && (t === !0 !== this.alphaToCoverage && (this.needsUpdate = !0), t === !0 ? this.defines.USE_ALPHA_TO_COVERAGE = "" : delete this.defines.USE_ALPHA_TO_COVERAGE);
   }
 }
-const X = new v(), Y = new v(), m = new A(), g = new A(), x = new A(), q = new v(), j = new lt(), _ = new St(), Z = new v(), T = new V(), I = new at(), b = new A();
+const q = new M(), Y = new v(), Z = new v(), m = new M(), g = new M(), x = new M(), j = new v(), G = new dt(), _ = new St(), J = new v(), T = new $(), I = new ct(), b = new M();
 let E, L;
-function J(s, t, e) {
+function K(s, t, e) {
   return b.set(0, 0, -t, 1).applyMatrix4(s.projectionMatrix), b.multiplyScalar(1 / b.w), b.x = L / e.width, b.y = L / e.height, b.applyMatrix4(s.projectionMatrixInverse), b.multiplyScalar(1 / b.w), Math.abs(Math.max(b.x, b.y));
 }
-function It(s, t) {
+function Rt(s, t) {
   const e = s.matrixWorld, i = s.geometry, n = i.attributes.instanceStart, r = i.attributes.instanceEnd, o = Math.min(i.instanceCount, n.count);
   for (let a = 0, h = o; a < h; a++) {
     _.start.fromBufferAttribute(n, a), _.end.fromBufferAttribute(r, a), _.applyMatrix4(e);
@@ -573,30 +575,30 @@ function It(s, t) {
     });
   }
 }
-function Rt(s, t, e) {
+function Wt(s, t, e) {
   const i = t.projectionMatrix, r = s.material.resolution, o = s.matrixWorld, a = s.geometry, h = a.attributes.instanceStart, u = a.attributes.instanceEnd, l = Math.min(a.instanceCount, h.count), c = -t.near;
-  E.at(1, x), x.w = 1, x.applyMatrix4(t.matrixWorldInverse), x.applyMatrix4(i), x.multiplyScalar(1 / x.w), x.x *= r.x / 2, x.y *= r.y / 2, x.z = 0, q.copy(x), j.multiplyMatrices(t.matrixWorldInverse, o);
+  E.at(1, x), x.w = 1, x.applyMatrix4(t.matrixWorldInverse), x.applyMatrix4(i), x.multiplyScalar(1 / x.w), x.x *= r.x / 2, x.y *= r.y / 2, x.z = 0, j.copy(x), G.multiplyMatrices(t.matrixWorldInverse, o);
   for (let p = 0, y = l; p < y; p++) {
-    if (m.fromBufferAttribute(h, p), g.fromBufferAttribute(u, p), m.w = 1, g.w = 1, m.applyMatrix4(j), g.applyMatrix4(j), m.z > c && g.z > c)
+    if (m.fromBufferAttribute(h, p), g.fromBufferAttribute(u, p), m.w = 1, g.w = 1, m.applyMatrix4(G), g.applyMatrix4(G), m.z > c && g.z > c)
       continue;
     if (m.z > c) {
-      const U = m.z - g.z, M = (m.z - c) / U;
-      m.lerp(g, M);
+      const C = m.z - g.z, A = (m.z - c) / C;
+      m.lerp(g, A);
     } else if (g.z > c) {
-      const U = g.z - m.z, M = (g.z - c) / U;
-      g.lerp(m, M);
+      const C = g.z - m.z, A = (g.z - c) / C;
+      g.lerp(m, A);
     }
     m.applyMatrix4(i), g.applyMatrix4(i), m.multiplyScalar(1 / m.w), g.multiplyScalar(1 / g.w), m.x *= r.x / 2, m.y *= r.y / 2, g.x *= r.x / 2, g.y *= r.y / 2, _.start.copy(m), _.start.z = 0, _.end.copy(g), _.end.z = 0;
-    const S = _.closestPointToPointParameter(q, !0);
-    _.at(S, Z);
-    const z = wt.lerp(m.z, g.z, S), P = z >= -1 && z <= 1, w = q.distanceTo(Z) < L * 0.5;
-    if (P && w) {
+    const w = _.closestPointToPointParameter(j, !0);
+    _.at(w, J);
+    const z = xt.lerp(m.z, g.z, w), P = z >= -1 && z <= 1, S = j.distanceTo(J) < L * 0.5;
+    if (P && S) {
       _.start.fromBufferAttribute(h, p), _.end.fromBufferAttribute(u, p), _.start.applyMatrix4(o), _.end.applyMatrix4(o);
-      const U = new v(), M = new v();
-      E.distanceSqToSegment(_.start, _.end, M, U), e.push({
-        point: M,
-        pointOnLine: U,
-        distance: E.origin.distanceTo(M),
+      const C = new v(), A = new v();
+      E.distanceSqToSegment(_.start, _.end, A, C), e.push({
+        point: A,
+        pointOnLine: C,
+        distance: E.origin.distanceTo(A),
         object: s,
         face: null,
         faceIndex: p,
@@ -606,16 +608,16 @@ function Rt(s, t, e) {
     }
   }
 }
-class Wt extends dt {
-  constructor(t = new ut(), e = new $({ color: Math.random() * 16777215 })) {
+class Ft extends ht {
+  constructor(t = new pt(), e = new k({ color: Math.random() * 16777215 })) {
     super(t, e), this.isLineSegments2 = !0, this.type = "LineSegments2";
   }
   // for backwards-compatibility, but could be a method of LineSegmentsGeometry...
   computeLineDistances() {
     const t = this.geometry, e = t.attributes.instanceStart, i = t.attributes.instanceEnd, n = new Float32Array(2 * e.count);
     for (let o = 0, a = 0, h = e.count; o < h; o++, a += 2)
-      X.fromBufferAttribute(e, o), Y.fromBufferAttribute(i, o), n[a] = a === 0 ? 0 : n[a - 1], n[a + 1] = n[a] + X.distanceTo(Y);
-    const r = new N(n, 2, 1);
+      Y.fromBufferAttribute(e, o), Z.fromBufferAttribute(i, o), n[a] = a === 0 ? 0 : n[a - 1], n[a + 1] = n[a] + Y.distanceTo(Z);
+    const r = new V(n, 2, 1);
     return t.setAttribute("instanceDistanceStart", new O(r, 1, 0)), t.setAttribute("instanceDistanceEnd", new O(r, 1, 1)), this;
   }
   raycast(t, e) {
@@ -630,7 +632,7 @@ class Wt extends dt {
       u = L * 0.5;
     else {
       const c = Math.max(n.near, I.distanceToPoint(E.origin));
-      u = J(n, c, h.resolution);
+      u = K(n, c, h.resolution);
     }
     if (I.radius += u, E.intersectsSphere(I) === !1)
       return;
@@ -640,12 +642,16 @@ class Wt extends dt {
       l = L * 0.5;
     else {
       const c = Math.max(n.near, T.distanceToPoint(E.origin));
-      l = J(n, c, h.resolution);
+      l = K(n, c, h.resolution);
     }
-    T.expandByScalar(l), E.intersectsBox(T) !== !1 && (i ? It(this, e) : Rt(this, n, e));
+    T.expandByScalar(l), E.intersectsBox(T) !== !1 && (i ? Rt(this, e) : Wt(this, n, e));
+  }
+  onBeforeRender(t) {
+    const e = this.material.uniforms;
+    e && e.resolution && (t.getViewport(q), this.material.uniforms.resolution.value.set(q.z, q.w));
   }
 }
-class pt extends ut {
+class ft extends pt {
   constructor() {
     super(), this.isLineGeometry = !0, this.type = "LineGeometry";
   }
@@ -666,12 +672,12 @@ class pt extends ut {
     return this.setPositions(e.attributes.position.array), this;
   }
 }
-class Ft extends Wt {
-  constructor(t = new pt(), e = new $({ color: Math.random() * 16777215 })) {
+class qt extends Ft {
+  constructor(t = new ft(), e = new k({ color: Math.random() * 16777215 })) {
     super(t, e), this.isLine2 = !0, this.type = "Line2";
   }
 }
-const qt = 2 * Math.PI, jt = {
+const jt = 2 * Math.PI, Gt = {
   container: document.body,
   placement: "top-right",
   size: 128,
@@ -732,7 +738,7 @@ const qt = 2 * Math.PI, jt = {
       main: "#2c8fff"
     }
   }
-}, ft = ["x", "y", "z", "nx", "ny", "nz"], Gt = {
+}, mt = ["x", "y", "z", "nx", "ny", "nz"], Ht = {
   x: [
     [1, 0, 0],
     [0, Math.PI * 0.5, 0]
@@ -757,9 +763,9 @@ const qt = 2 * Math.PI, jt = {
     [0, 0, -1],
     [0, Math.PI, 0]
   ]
-}, Ht = (s) => {
-  const t = new ht(), e = [], i = [];
-  if (ft.forEach((a, h) => {
+}, Nt = (s) => {
+  const t = new ut(), e = [], i = [];
+  if (mt.forEach((a, h) => {
     const u = s[a];
     if (u.line === !1) return;
     const l = h < 3 ? 1.1 : -1.1, c = h < 3 ? 1 : 1.125;
@@ -777,41 +783,41 @@ const qt = 2 * Math.PI, jt = {
       ...t.set(y).toArray()
     );
   }), !e.length) return null;
-  const n = new pt();
+  const n = new ft();
   n.setPositions(e), n.setColors(i);
-  const r = new $({
+  const r = new k({
     linewidth: s.lineWidth ?? 20,
     vertexColors: !0,
     resolution: new B(window.innerWidth, window.innerHeight)
-  }), o = new Ft(n, r);
+  }), o = new qt(n, r);
   return o.computeLineDistances(), o.scale.set(1, 1, 1), o.renderOrder = 1, o;
-}, Nt = (s) => {
+}, Vt = (s) => {
   const t = typeof s == "string" ? document.querySelector(s) : s;
   if (!t) throw Error("Invalid DOM element");
   return t;
 };
-function Vt({
+function $t({
   color: s,
   opacity: t
 } = {}) {
-  const e = new xt(1.8, 64, 64), i = new dt(
+  const e = new bt(1.8, 64, 64), i = new ht(
     e,
-    new bt({
+    new Et({
       color: s,
-      side: Et,
+      side: Mt,
       transparent: !0,
       opacity: t ?? 0.2
     })
   );
   return i.renderOrder = 0, i;
 }
-function $t(s, t, e, i, n, r, o, a = !0, h = !1) {
+function kt(s, t, e, i, n, r, o, a = !0, h = !1) {
   const u = document.createElement("canvas");
   t = t ?? 64;
   const l = 0.02;
   u.width = t * 2 + t * (l * 4), u.height = t + t * (l * 2);
   const c = t / 2, p = t / 2 + t * l, y = p * 3, f = u.getContext("2d");
-  if (K(f, c, p, p, e, a, h), K(
+  if (tt(f, c, p, p, e, a, h), tt(
     f,
     c,
     y,
@@ -820,21 +826,21 @@ function $t(s, t, e, i, n, r, o, a = !0, h = !1) {
     a,
     h
   ), i != null) {
-    const z = s.family || "sans-serif", P = s.weight || 500, w = kt(f, i, z, P, t);
-    f.textAlign = "center", f.textBaseline = "middle", f.fillStyle = n || "#000", f.fillText(i, p, p + w), f.fillStyle = o || n || "#000", f.fillText(i, y, p + w);
+    const z = s.family || "sans-serif", P = s.weight || 500, S = Qt(f, i, z, P, t);
+    f.textAlign = "center", f.textBaseline = "middle", f.fillStyle = n || "#000", f.fillText(i, p, p + S), f.fillStyle = o || n || "#000", f.fillText(i, y, p + S);
   }
-  const S = new Mt(u);
-  return S.colorSpace = At, S.wrapS = S.wrapT = Lt, S.repeat.x = 0.5, new zt({
-    map: S,
+  const w = new At(u);
+  return w.colorSpace = Lt, w.wrapS = w.wrapT = zt, w.repeat.x = 0.5, new Pt({
+    map: w,
     toneMapped: !1,
     transparent: !0
   });
 }
-function K(s, t, e, i, n, r, o = !1) {
+function tt(s, t, e, i, n, r, o = !1) {
   const a = i * 0.1;
   t = o ? t - a : t, s.beginPath(), s.arc(e, i, t, 0, 2 * Math.PI), s.closePath(), o && (s.globalAlpha = 0.2), r && (s.fillStyle = n, s.fill()), o && (s.globalAlpha = 1, s.strokeStyle = n, s.lineWidth = a, s.stroke());
 }
-function kt(s, t, e, i, n) {
+function Qt(s, t, e, i, n) {
   const r = Math.sqrt(Math.pow(n * 0.7, 2) / 2);
   let o = r, a = 0, h = 0;
   do {
@@ -845,54 +851,54 @@ function kt(s, t, e, i, n) {
   const u = Math.min(r / a, r / h), l = Math.floor(o * u);
   return s.font = `${i} ${l}px ${e}`, r / h;
 }
-function Qt(s) {
-  const t = new ht(), { font: e, resolution: i } = s;
-  return ft.map((n, r) => {
-    const { text: o, colors: a, circle: h, border: u } = s[n], l = r < 3, c = l ? n : n[1], { text: p, main: y, hover: f, hoverText: S } = a, z = Array.isArray(y) ? y[1] : y, P = u && o, w = new Pt(
-      $t(
+function Xt(s) {
+  const t = new ut(), { font: e, resolution: i } = s;
+  return mt.map((n, r) => {
+    const { text: o, colors: a, circle: h, border: u } = s[n], l = r < 3, c = l ? n : n[1], { text: p, main: y, hover: f, hoverText: w } = a, z = Array.isArray(y) ? y[1] : y, P = u && o, S = new Ct(
+      kt(
         e,
         i,
         t.set(z).getStyle(),
         o,
         p != null ? t.set(p).getStyle() : null,
         f != null ? t.set(f).getStyle() : null,
-        S != null ? t.set(S).getStyle() : null,
+        w != null ? t.set(w).getStyle() : null,
         h ?? !0,
         u
       )
     );
-    return w.userData.axis = n, w.userData.forceScale = P, w.scale.setScalar(P || l ? 0.6 : 0.4), w.position[c] = l ? 1.4 : -1.4, w.renderOrder = 100, w;
+    return S.userData.axis = n, S.userData.forceScale = P, S.scale.setScalar(P || l ? 0.6 : 0.4), S.position[c] = l ? 1.4 : -1.4, S.renderOrder = 100, S;
   });
 }
-const Xt = [
+const Yt = [
   ["x", 0, 3],
   ["y", 1, 4],
   ["z", 2, 5]
-], tt = 1, et = 0.5, it = /* @__PURE__ */ new v();
-function Yt(s, t) {
-  it.set(0, 0, 1).applyQuaternion(t.quaternion), Xt.forEach(([e, i, n]) => {
-    const r = it[e];
-    s[i].material.opacity = r >= 0 ? tt : et, s[n].material.opacity = r >= 0 ? et : tt;
+], et = 1, it = 0.5, nt = /* @__PURE__ */ new v();
+function Zt(s, t) {
+  nt.set(0, 0, 1).applyQuaternion(t.quaternion), Yt.forEach(([e, i, n]) => {
+    const r = nt[e];
+    s[i].material.opacity = r >= 0 ? et : it, s[n].material.opacity = r >= 0 ? it : et;
   });
 }
-const Zt = (s, t, e = 10) => Math.abs(s.clientX - t.x) < e && Math.abs(s.clientY - t.y) < e;
-function G(s) {
+const Jt = (s, t, e = 10) => Math.abs(s.clientX - t.x) < e && Math.abs(s.clientY - t.y) < e;
+function H(s) {
   for (let t = 0, e = s.length; t < e; t++)
     s[t].scale.setScalar(
       t < 3 || s[t].userData.forceScale ? 0.6 : 0.4
     ), s[t].material.map.offset.x = 1;
 }
-const nt = /* @__PURE__ */ new Ut(), H = /* @__PURE__ */ new B();
-function st(s, t, e, i) {
-  H.x = (s.clientX - t.left) / t.width * 2 - 1, H.y = -((s.clientY - t.top) / t.height) * 2 + 1, nt.setFromCamera(H, e);
-  const n = nt.intersectObjects(i);
+const st = /* @__PURE__ */ new Ut(), N = /* @__PURE__ */ new B();
+function rt(s, t, e, i) {
+  N.x = (s.clientX - t.left) / t.width * 2 - 1, N.y = -((s.clientY - t.top) / t.height) * 2 + 1, st.setFromCamera(N, e);
+  const n = st.intersectObjects(i);
   return n.length ? n[0].object : null;
 }
-const Jt = (s, t, e) => Math.min(Math.max(s, t), e), rt = (s, { color: t, opacity: e, hoverColor: i, hoverOpacity: n } = {}, r = !0) => {
+const Kt = (s, t, e) => Math.min(Math.max(s, t), e), ot = (s, { color: t, opacity: e, hoverColor: i, hoverOpacity: n } = {}, r = !0) => {
   const o = s.material;
   o.color.set(r && i || t || 16777215), o.opacity = r ? n ?? 0.2 : e ?? 0;
-}, C = /* @__PURE__ */ new lt(), ot = /* @__PURE__ */ new Dt();
-class ee extends Ct {
+}, U = /* @__PURE__ */ new dt(), at = /* @__PURE__ */ new Tt();
+class ie extends Ot {
   /**
    * Creates a new ViewportGizmo instance.
    *
@@ -974,17 +980,17 @@ class ee extends Ct {
     d(this, "_sphere");
     d(this, "_sphereConfig");
     d(this, "_spritePoints");
-    d(this, "_viewport", new A());
-    d(this, "_originalViewport", new A());
-    d(this, "_originalScissor", new A());
+    d(this, "_viewport", new M());
+    d(this, "_originalViewport", new M());
+    d(this, "_originalScissor", new M());
     d(this, "_renderer");
-    d(this, "_orthoCamera", new Ot(-1.8, 1.8, 1.8, -1.8, 0, 4));
+    d(this, "_orthoCamera", new Bt(-1.8, 1.8, 1.8, -1.8, 0, 4));
     d(this, "_container");
     d(this, "_domElement");
     d(this, "_domRect");
     d(this, "_dragging", !1);
     d(this, "_distance", 0);
-    d(this, "_clock", new Bt());
+    d(this, "_clock", new Dt());
     d(this, "_targetPosition", new v());
     d(this, "_targetQuaternion", new F());
     d(this, "_quaternionStart", new F());
@@ -993,7 +999,7 @@ class ee extends Ct {
     d(this, "_mouseAngle", new B());
     d(this, "_controls");
     d(this, "_controlsListeners");
-    this._renderer = i, this.camera = e, this._orthoCamera.position.set(0, 0, 2), n = { ...jt, ...n || {} };
+    this._renderer = i, this.camera = e, this._orthoCamera.position.set(0, 0, 2), n = { ...Gt, ...n || {} };
     const {
       container: r,
       placement: o,
@@ -1006,8 +1012,8 @@ class ee extends Ct {
       className: y
     } = n;
     this.animated = h, this.speed = u;
-    const f = Ht(n);
-    f && this.add(f), this._spritePoints = Qt(n), this.add(...this._spritePoints), c.enabled && (this._sphere = Vt(c), this._sphereConfig = c, this.add(this._sphere)), this._container = r ? Nt(r) : document.body, this._domElement = Tt(o, a, l, p, y), this._container.appendChild(this._domElement), this._startListening(), this.update();
+    const f = Nt(n);
+    f && this.add(f), this._spritePoints = Xt(n), this.add(...this._spritePoints), c.enabled && (this._sphere = $t(c), this._sphereConfig = c, this.add(this._sphere)), this._container = r ? Vt(r) : document.body, this._domElement = It(o, a, l, p, y), this._container.appendChild(this._domElement), this._startListening(), this.update();
   }
   /**
    * Renders the gizmo to the screen.
@@ -1090,7 +1096,7 @@ class ee extends Ct {
    * @param fromCamera - Whether to update based on camera orientation (true) or internal state (false)
    */
   _updateOrientation(e = !0) {
-    e && (this.quaternion.copy(this.camera.quaternion).invert(), this.updateMatrixWorld()), Yt(this._spritePoints, this.camera);
+    e && (this.quaternion.copy(this.camera.quaternion).invert(), this.updateMatrixWorld()), Zt(this._spritePoints, this.camera);
   }
   /**
    * Handles the animation of camera position and orientation changes.
@@ -1103,7 +1109,7 @@ class ee extends Ct {
       e.applyQuaternion(this._quaternionEnd).multiplyScalar(this._distance).add(this.target), i.copy(this._targetQuaternion), this._updateOrientation(), this.animating = !1, this.dispatchEvent({ type: "change" }), this.dispatchEvent({ type: "end" });
       return;
     }
-    const r = this._clock.getDelta() * qt * this.speed;
+    const r = this._clock.getDelta() * jt * this.speed;
     this._quaternionStart.rotateTowards(this._quaternionEnd, r), e.applyQuaternion(this._quaternionStart).multiplyScalar(this._distance).add(this.target), i.rotateTowards(this._targetQuaternion, r), this._updateOrientation(), requestAnimationFrame(() => this.dispatchEvent({ type: "change" })), this._quaternionStart.angleTo(this._quaternionEnd) === 0 && (this.animating = !1, this.dispatchEvent({ type: "end" }));
   }
   /**
@@ -1113,8 +1119,8 @@ class ee extends Ct {
    * @param axis - The axis to orient the camera along
    */
   _setOrientation(e) {
-    const i = this.camera, n = this.target, [r, o] = Gt[e];
-    this._targetPosition.fromArray(r), this._targetQuaternion.setFromEuler(ot.fromArray(o)), this._targetPosition.multiplyScalar(this._distance).add(n), C.setPosition(i.position), C.lookAt(i.position, n, this.up), this._quaternionStart.setFromRotationMatrix(C), C.setPosition(this._targetPosition), C.lookAt(this._targetPosition, n, this.up), this._quaternionEnd.setFromRotationMatrix(C), this.animating = !0, this._clock.start(), this.dispatchEvent({ type: "start" });
+    const i = this.camera, n = this.target, [r, o] = Ht[e];
+    this._targetPosition.fromArray(r), this._targetQuaternion.setFromEuler(at.fromArray(o)), this._targetPosition.multiplyScalar(this._distance).add(n), U.setPosition(i.position), U.lookAt(i.position, n, this.up), this._quaternionStart.setFromRotationMatrix(U), U.setPosition(this._targetPosition), U.lookAt(this._targetPosition, n, this.up), this._quaternionEnd.setFromRotationMatrix(U), this.animating = !0, this._clock.start(), this.dispatchEvent({ type: "start" });
   }
   /**
    * Initializes event listeners for user interaction.
@@ -1134,10 +1140,10 @@ class ee extends Ct {
     if (!this.enabled) return;
     const i = (o) => {
       if (!this._dragging) {
-        if (Zt(o, this._mouseStart)) return;
-        G(this._spritePoints), this._dragging = !0;
+        if (Jt(o, this._mouseStart)) return;
+        H(this._spritePoints), this._dragging = !0;
       }
-      this._mouseAngle.set(o.clientX, o.clientY).sub(this._mouseStart).multiplyScalar(1 / this._domRect.width * Math.PI), this.rotation.x = Jt(
+      this._mouseAngle.set(o.clientX, o.clientY).sub(this._mouseStart).multiplyScalar(1 / this._domRect.width * Math.PI), this.rotation.x = Kt(
         r.x + this._mouseAngle.y,
         Math.PI / -2 + 1e-3,
         Math.PI / 2 - 1e-3
@@ -1148,7 +1154,7 @@ class ee extends Ct {
     };
     if (this.animating) return;
     e.preventDefault(), this._mouseStart.set(e.clientX, e.clientY);
-    const r = ot.copy(this.rotation);
+    const r = at.copy(this.rotation);
     this._distance = this.camera.position.distanceTo(this.target), document.addEventListener("pointermove", i, !1), document.addEventListener("pointerup", n, !1), this.dispatchEvent({ type: "start" });
   }
   /**
@@ -1158,7 +1164,7 @@ class ee extends Ct {
    * @param e - The pointer event
    */
   _onPointerMove(e) {
-    !this.enabled || this._dragging || (this._sphere && rt(this._sphere, this._sphereConfig), this._handleHover(e));
+    !this.enabled || this._dragging || (this._sphere && ot(this._sphere, this._sphereConfig), this._handleHover(e));
   }
   /**
    * Handles pointer leave events to reset hover states.
@@ -1166,7 +1172,7 @@ class ee extends Ct {
    * @private
    */
   _onPointerLeave() {
-    !this.enabled || this._dragging || (this._sphere && rt(this._sphere, this._sphereConfig, !1), G(this._spritePoints), this._domElement.style.cursor = "");
+    !this.enabled || this._dragging || (this._sphere && ot(this._sphere, this._sphereConfig, !1), H(this._spritePoints), this._domElement.style.cursor = "");
   }
   /**
    * Handles click events for axis selection.
@@ -1175,7 +1181,7 @@ class ee extends Ct {
    * @param e - The pointer event
    */
   _handleClick(e) {
-    const i = st(
+    const i = rt(
       e,
       this._domRect,
       this._orthoCamera,
@@ -1190,16 +1196,16 @@ class ee extends Ct {
    * @param e - The pointer event
    */
   _handleHover(e) {
-    const i = st(
+    const i = rt(
       e,
       this._domRect,
       this._orthoCamera,
       this._spritePoints
     );
-    G(this._spritePoints), i ? (i.material.map.offset.x = 0.5, i.scale.multiplyScalar(1.2), this._domElement.style.cursor = "pointer") : this._domElement.style.cursor = "";
+    H(this._spritePoints), i ? (i.material.map.offset.x = 0.5, i.scale.multiplyScalar(1.2), this._domElement.style.cursor = "pointer") : this._domElement.style.cursor = "";
   }
 }
 export {
-  ee as ViewportGizmo
+  ie as ViewportGizmo
 };
 //# sourceMappingURL=three-viewport-gizmo.js.map
